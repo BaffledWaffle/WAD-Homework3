@@ -1,22 +1,147 @@
-/* Tablet */
+
+
+/* Large Tablets (1024px and below) */
 @media (max-width: 1024px) {
-    .sidebar { display: none; }
-    #login-form, #signup-form { left: 50%; width: 60%; }
-    #add-post-form { width: 90%; }
+    .sidebar { 
+        display: none; 
+    }
+    
+    #login-form, #signup-form { 
+        left: 50%; 
+        width: 60%; 
+        max-width: 400px; /* Prevent overflow */
+    }
+    
+    #add-post-form { 
+        width: 90%; 
+        max-width: 600px;
+    }
+    
+    #content-positioner {
+        justify-content: center; /* Center content */
+    }
+    
+    footer {
+        padding: 30px 40px; /* Reduce padding */
+    }
 }
 
-/* Mobile */
+/* Tablets & Large Mobile (768px and below) */
 @media (max-width: 768px) {
     #login-form, #signup-form, #add-post-form { 
         width: 90%; 
         position: relative;
         margin: 50px auto;
+        left: auto; /* Remove absolute positioning */
+        transform: none;
     }
-    footer #columns-container { flex-direction: column; }
+    
+    #navbar {
+        padding: 7px 15px;
+    }
+    
+    #navbar #header-links-container a {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+    
+    footer #columns-container { 
+        flex-direction: column; 
+        gap: 25px;
+    }
+    
+    footer {
+        padding: 25px 30px;
+    }
+    
+    /* Fix white space by constraining widths */
+    #feed-of-posts {
+        width: 95%;
+        max-width: 100%;
+        margin: 30px auto;
+        padding: 15px;
+    }
 }
 
-/* Small Mobile */
+/* Mobile (600px and below) */
 @media (max-width: 600px) {
-    #navbar { flex-direction: column; }
-    #login-form, #signup-form { width: 95%; }
+    #navbar { 
+        flex-direction: column; 
+        gap: 10px;
+        padding: 10px 15px;
+    }
+    
+    #navbar #header-links-container {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    #navbar #account {
+        order: 1;
+        align-self: flex-end;
+    }
+    
+    #login-form, #signup-form { 
+        width: 95%; 
+        margin: 30px auto;
+    }
+    
+    #add-post-form {
+        width: 95%;
+        margin: 30px auto;
+    }
+    
+    #inputs-container {
+        padding: 20px;
+    }
+    
+    /* Fix form container padding */
+    #add-post-form #inputs-container {
+        padding: 20px 25px;
+    }
+    
+    footer {
+        padding: 20px 15px;
+    }
+    
+    /* Ensure no overflow */
+    #feed-of-posts {
+        width: 98%;
+        padding: 10px;
+        margin: 20px auto;
+    }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+    #navbar #header-links-container a {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+    
+    #inputs-container > button {
+        padding: 8px 30px;
+        font-size: 14px;
+    }
+    
+    footer {
+        padding: 15px 10px;
+    }
+    
+    footer .column h2 {
+        font-size: 20px;
+    }
+    
+    /* Extra protection against overflow */
+    #login-form, #signup-form, #add-post-form {
+        width: 98%;
+        margin: 20px auto;
+    }
+    
+    #feed-of-posts {
+        width: 99%;
+        margin: 15px auto;
+    }
 }
