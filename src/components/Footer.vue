@@ -12,7 +12,7 @@
             </div>
             <div class="column">
                 <h2>Quote of the moment</h2>
-                <p id="footer-quote"></p>
+                <p id="footer-quote">{{ quote }}</p>
             </div>
             <div class="column">
                 <h2>Our team</h2>
@@ -29,27 +29,32 @@
 
 <script>
     export default {
-        name: 'FooterComponent'
-    }
+        name: 'FooterComponent',
 
-    /*Displays a new quote in the footer every time the page refreshes*/
+    data() {
+    return {
+      quote: ''
+    };
+  },
 
-document.addEventListener("DOMContentLoaded", function() {
+  mounted() {
     const quotes = [
-        "Life is better with a slice of pizza",
-        "Creativity takes courage",
-        "Seashells are whispers of the ocean",
-        "A day without laughter is a day wasted",
-        "Small steps lead to big adventures",
-        "Share your ideas, inspire the world",
-        "If we had not been born, there would be no problems, then we would not have been born, we would not exist (c) Evelina"
+      "Life is better with a slice of pizza",
+      "Creativity takes courage",
+      "Seashells are whispers of the ocean",
+      "A day without laughter is a day wasted",
+      "Small steps lead to big adventures",
+      "Share your ideas, inspire the world",
+      "If we had not been born, there would be no problems, then we would not have been born, we would not exist (c) Evelina"
     ];
 
     const randomIndex = Math.floor(Math.random() * quotes.length);
+    this.quote = quotes[randomIndex]; // Vue updates the template
+  }
+}
 
-    document.getElementById("footer-quote").textContent = quotes[randomIndex];
-});
 </script>
+
 
 <style scoped>
 footer {
