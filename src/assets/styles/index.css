@@ -74,8 +74,8 @@
 }
 
 .reset-likes-btn {
-  background-color: #341A0B;
-  color: #F5E8D9;
+  background-color: #800000;
+   color: #F5E8D9;
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
@@ -85,6 +85,6 @@
 }
 
 .reset-likes-btn:hover {
-  background-color: #1F0E03;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    background-color: #341A0B;
+    color: #B2997C;
 }

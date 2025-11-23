@@ -51,6 +51,10 @@
   transform: none;
 }
 
+#inputs-container > p a{
+    color: #800000;
+}
+
 #inputs-container > p a:hover {
     color: #AF0101;
 }
