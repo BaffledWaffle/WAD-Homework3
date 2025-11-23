@@ -2,6 +2,7 @@
     <nav id="navbar">
         <div id="header-links-container">
             <router-link to="/" class="nav-link">Home</router-link>
+            <span id="divider">|</span>
             <router-link to="/login" class="nav-link">Login</router-link>
             <router-link to="/signup" class="nav-link">Signup</router-link>
             <router-link to="/add-post" class="nav-link">Add Post</router-link>
@@ -122,6 +123,16 @@ export default {
 #account-image-container:hover {
     cursor: pointer;
     background-color: #1F0E03;
+}
+
+#divider{
+    font-family:Arial, Helvetica, sans-serif;
+    color: #B2997C !important;
+    opacity: 0.6;
+    margin: 0 8px;
+    user-select: none;
+    font-weight: 300;
+
 }
 
 /* Dropdown content (hidden by default) */

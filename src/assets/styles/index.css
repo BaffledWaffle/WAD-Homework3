@@ -45,7 +45,7 @@
     /*style*/
     background-color: rgba(245, 232, 217, 0.6);
     backdrop-filter: blur(5px);
-    border-radius: 10px; /* Optional*/
+    border-radius: 10px; 
     
 }
 
@@ -62,4 +62,29 @@
 /* Kõik postitused pärast esimest postitust */
 .post:first-child ~ .post {
     margin-top: 20px;
+}
+
+/*reset likes button */
+
+.reset-likes-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.reset-likes-btn {
+  background-color: #341A0B;
+  color: #F5E8D9;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: "mont";
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.reset-likes-btn:hover {
+  background-color: #1F0E03;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
 }
