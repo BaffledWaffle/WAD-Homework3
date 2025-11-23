@@ -1,5 +1,8 @@
 # wad-homework3
 
+## Last homeworks
+Repositry with last homeworks - https://github.com/BaffledWaffle/WAD-homework/
+
 ## Project setup
 ```
 npm install
