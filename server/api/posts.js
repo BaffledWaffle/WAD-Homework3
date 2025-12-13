@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('./auth');
-const data = require('./data'); // подключаем data.js
+const data = require('../db/data'); // подключаем data.js
 
 // - Read -
 router.get('/', async (req, res) => { // Show all posts
@@ -59,7 +59,6 @@ router.delete('/:id', auth, async (req, res) => { // Delete chosen post
     }
 });
 
-// - Delete all posts -
 router.delete('/', auth, async (req, res) => { // Delete all posts
     try {
     await data.deleteAllPosts();
