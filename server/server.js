@@ -20,20 +20,21 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Connect router
-const authRoutes = require('./api/auth');
+const usersRoutes = require('./api/users');
 const postRoutes = require('./api/posts');
 
-app.use('/api/auth', authRoutes);
+app.use('/api/users', usersRoutes);
 app.use('/api/posts', postRoutes);
 
 //  Handling HTTP requests code will go here  
 
-( async () => {
-    // Initialize database if doesn't exist
-    await initDatabase
-
-    // And then start listening requests on port
+(async () => {
+  try {
+    await initDatabase(); // вызываем функцию
     app.listen(port, () => {
-    console.log("Server is listening to port " + port)
-});
-} )
+      console.log(`Server is listening on port ${port}`);
+    });
+  } catch (err) {
+    console.error('Failed to initialize database:', err);
+  }
+})();

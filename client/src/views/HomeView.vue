@@ -59,13 +59,14 @@ export default {
  computed: {
   ...mapGetters(['allPosts'])
   },
-
-    methods: {
-    ...mapActions(['resetLikes']),
+  methods: {
+    ...mapActions(['resetLikes', 'fetchPosts']),
     resetAllLikes() {
       this.resetLikes();
     }
-    
+  },
+  mounted() {
+    this.fetchPosts();
   }
 }
 

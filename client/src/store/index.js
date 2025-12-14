@@ -1,9 +1,9 @@
 import { createStore } from 'vuex';
-import postsData from '@/assets/js/posts.json'; 
+import axios from 'axios'
 
 export default createStore({
   state: {
-    posts: postsData // store all posts
+    posts: []
   },
   getters: {
     // Get all posts
@@ -20,7 +20,11 @@ export default createStore({
     // Reset likes for all posts
     resetLikes(state) {
       state.posts.forEach(post => post.likes = 0);
-    }
+    },
+    setPosts(state, posts) {
+    state.posts = posts;
+  }
+
   },
   actions: {
     // Actions can call mutations if needed (optional here)
@@ -32,7 +36,7 @@ export default createStore({
     },
     async fetchPosts( {commit} ) {
       try {
-        const res = await axios.get('http://localhost:3000/api/posts/get');
+        const res = await axios.get('http://localhost:3000/api/posts/get-all');
         commit('setPosts', res.data);
       } catch (err) {
         console.error('Error fetching posts:', err)

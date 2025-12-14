@@ -16,9 +16,8 @@ async function initDatabase() {
     await pool.query(`
         CREATE TABLE IF NOT EXISTS posts (
             id SERIAL PRIMARY KEY,
-            body TEXT NOT NULL,
-            date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            user_id INTEGER REFERENCES users(id) ON DELETE SET NULL
+            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            body TEXT NOT NULL
         );
     `);
 

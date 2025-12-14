@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('./auth');
+const auth = require('../jwt/auth');
 const data = require('../db/data'); // подключаем data.js
 
 // - Read -
