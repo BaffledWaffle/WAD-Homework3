@@ -19,6 +19,13 @@ app.use(cors( { origin: 'http://localhost:8080', credentials: true } ));
 app.use(express.json());
 app.use(cookieParser());
 
+// Connect router
+const authRoutes = require('./api/auth');
+const postRoutes = require('./api/posts');
+
+app.use('/api/auth', authRoutes);
+app.use('/api/posts', postRoutes);
+
 //  Handling HTTP requests code will go here  
 
 ( async () => {

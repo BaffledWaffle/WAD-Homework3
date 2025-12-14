@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const data = require('../db/data');
+
 
 // - Sugnup -
 router.post('/signup', async (req, res) => {
@@ -11,7 +11,7 @@ router.post('/signup', async (req, res) => {
 
     // Check if user already exists
     const existingUser = await data.getUserByEmail(email);
-        if (user) {
+        if (existingUser) {
         // User already exists, then check password and login him
         const valid = await bcrypt.compare(password, user.password);
         if (!valid) return res.status(401).json({ message: 'Wrong password' });
@@ -58,4 +58,12 @@ router.post('/login', async (req, res) => {
   }
 });
 
-module.exports = router;
+// - Logout -
+router.post('/logout', (req, res) => {
+  res.clearCookie('token', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', 
+    sameSite: 'lax'
+  });
+  res.json({ message: 'Logged out' });
+});

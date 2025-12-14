@@ -4,7 +4,7 @@ const auth = require('./auth');
 const data = require('../db/data'); // подключаем data.js
 
 // - Read -
-router.get('/', async (req, res) => { // Show all posts
+router.get('/get-all', async (req, res) => { // Show all posts
     try {
     const posts = await data.getAllPosts();
     res.json(posts);
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => { // Show all posts
     }
 });
 
-router.get('/:id', async (req, res) => { // Show post with given id
+router.get('/get/:id', async (req, res) => { // Show post with given id
     try {
     const post = await data.getPostById(req.params.id);
     if (!post) return res.status(404).json({ message: 'Post not found' });
@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => { // Show post with given id
 });
 
 // - Create -
-router.post('/', auth, async (req, res) => { // Add a new post
+router.post('/create', auth, async (req, res) => { // Add a new post
     try {
     const post = await data.createPost(req.body.body);
     res.status(201).json(post);
@@ -37,7 +37,7 @@ router.post('/', auth, async (req, res) => { // Add a new post
 });
 
 // - Update -
-router.put('/:id', auth, async (req, res) => { // Update post with given ID
+router.put('/update/:id', auth, async (req, res) => { // Update post with given ID
     try {
     const post = await data.updatePost(req.params.id, req.body.body);
     if (!post) return res.status(404).json({ message: 'Post not found' });
@@ -49,7 +49,7 @@ router.put('/:id', auth, async (req, res) => { // Update post with given ID
 });
 
 // - Delete -
-router.delete('/:id', auth, async (req, res) => { // Delete chosen post
+router.delete('/delete/:id', auth, async (req, res) => { // Delete chosen post
     try {
     await data.deletePost(req.params.id);
     res.sendStatus(204);
@@ -59,7 +59,7 @@ router.delete('/:id', auth, async (req, res) => { // Delete chosen post
     }
 });
 
-router.delete('/', auth, async (req, res) => { // Delete all posts
+router.delete('/delete-all', auth, async (req, res) => { // Delete all posts
     try {
     await data.deleteAllPosts();
     res.send('All posts deleted');
