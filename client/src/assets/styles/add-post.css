@@ -50,21 +50,6 @@
 }
 
 
-#post-file {                            /* PROBLEM: bad for optimization*/
-  display: inline-block;
-  padding: 10px 100px;
-  cursor: pointer;
-  margin-left: 17px;                   /*One line with text box, other options?*/
-  background-color: #800000;
-  border-radius: 1em;
-  color: #F5E8D9;
-  font-size: 1em !important;
-}
-
-#post-file:hover {
-    background-color: #341A0B;
-    color: #B2997C;
-}
 
 #inputs-container textarea {
     font-size: 20px;

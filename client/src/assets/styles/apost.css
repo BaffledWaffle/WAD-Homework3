@@ -1,0 +1,109 @@
+/* ApostView.css */
+
+.post-view {
+    background-image: url("../img/background_addPost.png"); 
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.post {
+    max-width: 700px;
+    width: 70%;
+    background-color: rgba(245, 232, 217, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.usernames {
+    font-weight: bold;
+    font-family: "mont";
+}
+
+.post-date {
+    font-family: "mont_light";
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+}
+
+.editable-text {
+    width: 100%;
+    min-height: 200px;
+    padding: 10px;
+    font-family: "mont_light";
+    font-size: 16px;
+    outline: none;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.post-like {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.post-like button {
+    width: 30px;
+    height: 30px;
+    background-image: url("@/assets/img/heartEmpty.png");
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+}
+
+.post-like button:hover {
+    background-image: url("@/assets/img/heartHover.png");
+}
+
+/* Buttons container */
+.apost-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Update button */
+.apost-action-btn {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: "mont";
+}
+
+.apost-action-btn.update {
+    background-color: #341A0B;
+    color: #F5E8D9;
+}
+
+/* Delete button */
+.apost-action-btn.delete {
+  background-color: #8B2E2E;
+  color: white;
+  font-family: "mont";
+}
+
+
+.apost-action-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}

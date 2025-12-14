@@ -8,8 +8,8 @@
       <p>Address: 123 Main Street, City, Country</p>
     </div>
 
-    <FooterComponent />
   </div>
+  <FooterComponent />
 </template>
 
 <script>

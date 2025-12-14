@@ -108,6 +108,7 @@
   border: none;
   cursor: pointer;
   transition: 0.3s;
+  font-family: "mont";
 }
 
 .action-btn.add {
@@ -118,6 +119,7 @@
 .action-btn.delete {
   background-color: #8B2E2E;
   color: white;
+  font-family: "mont";
 }
 
 .action-btn:hover {
@@ -152,6 +154,7 @@
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
+  font-family: "mont";
 }
 
 .logout-btn:hover {

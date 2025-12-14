@@ -1,22 +1,20 @@
 <template>
-        <div id="content">
-            <form id="add-post-form" action="">
-                <div id="inputs-container">
-                    <div>
-                        <label for="post-file">Add file:</label>
-                        <label id="post-file" name="postFile">
-                            <input type="file"/>Choose file
-                        </label>
-                    </div>
-                    <div>
-                        <label for="post-text">Post text:</label>
-                        <textarea id="post-text" placeholder="Type here Your post text..." name="postText"></textarea>
-                    </div>
-                </div>
-                <button type="button" @click="goToCreatePost">CREATE POST</button>
-            </form>
+  <div id="content">
+    <form id="add-post-form" @submit.prevent="goToCreatePost">
+      <div id="inputs-container">
+        <div>
+          <label for="post-text">Post text:</label>
+          <textarea 
+            id="post-text" 
+            placeholder="Type here your post text..." 
+            v-model="body">
+          </textarea>
         </div>
-      <FooterComponent />
+      </div>
+      <button type="submit">CREATE POST</button>
+    </form>
+  </div>
+  <FooterComponent />
 </template>
 
 <script>

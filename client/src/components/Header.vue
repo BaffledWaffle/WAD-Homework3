@@ -19,19 +19,21 @@
 
         <!-- Dropdown Menu -->
         <div id="myDropdown" class="dropdown-content" :class="{ show: dropdownVisible }">
-            <a href="#" @click.prevent="handleProfile">Profile</a>
-            <a href="#" @click.prevent="handleSettings">Settings</a>
+            <a href="#">{{ userEmail }}</a>
             <a href="#" @click.prevent="handleLogout">Logout</a>
         </div>
     </nav>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default { 
     name: 'HeaderComponent',
     data() {
         return {
-            dropdownVisible: false
+            dropdownVisible: false,
+            userEmail: ''
         }
     },
     methods: {
@@ -39,20 +41,24 @@ export default {
             event.stopPropagation(); 
             this.dropdownVisible = !this.dropdownVisible;
         },
-        handleProfile() {
-            console.log('Profile clicked');
-            this.dropdownVisible = false;
-        },
-        handleSettings() {
-            console.log('Settings clicked');
-            this.dropdownVisible = false;
-        },
+        
         handleLogout() {
             console.log('Logout clicked');
             this.dropdownVisible = false;
         },
         closeDropdown() {
             this.dropdownVisible = false;
+        },
+        async fetchUserEmail() {
+            try {
+                const token = localStorage.getItem('token')
+                const res = await axios.get('http://localhost:3000/me', {
+                    headers: { Authorization: `Bearer ${token}` }
+                })
+                this.userEmail = res.data.email
+            } catch (err) {
+                console.error(err)
+            }
         }
     },
     mounted() {

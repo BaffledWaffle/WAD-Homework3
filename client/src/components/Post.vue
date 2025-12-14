@@ -1,17 +1,9 @@
 <template>
-  <div class="post">
-    <!-- Post image (only shown if image_path exists) -->
-    <div v-if="post.image_path" class="post-images">
-      <img :src="getImageUrl(post.image_path)" alt="post" />
-    </div>
-
+  <div class="post" @click="goToApostView">
     <div class="avatar-text">
-      <div class="user-avatar">
-        <img :src="getImageUrl(post.avatar_path)" alt="user-avatar" />
-      </div>
-
       <div class="text">
         <div class="post-header">
+          <!-- Only show username (nickname) -->
           <p class="usernames">{{ post.author }}</p>
           <p class="post-date">{{ formatDate(post.created_at) }}</p>
         </div>
@@ -21,13 +13,13 @@
         </p>
 
         <!-- Show more / Show less button -->
-        <button v-if="showButton" @click="toggleExpanded">
+        <button v-if="showButton" @click.stop="toggleExpanded">
           {{ expanded ? 'Show less' : 'Show more' }}
         </button>
 
-        <!-- Like button with like count -->
+        <!-- Like button (visual only) -->
         <div class="post-like">
-          <button @click="likePost"></button>
+          <button @click.stop="likePost"></button>
           <p>{{ post.likes }}</p>
         </div>
       </div>
@@ -54,31 +46,23 @@ export default {
     this.checkShowButton();
   },
   methods: {
-
-    getImageUrl(path) {
-      if (!path) return '';
-      // Handle both absolute and relative paths
-      if (path.startsWith('assets/')) {
-        return require(`@/${path}`);
-      }
-      return path;
-    },
-
+    goToApostView() {
+      this.$router.push(`/post/${this.post.id}`); // navigate to ApostView
+    }, 
     formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric',
         year: 'numeric'
       });
-      // Returns: "Oct 31, 2025"
     },
-
     toggleExpanded() {
       this.expanded = !this.expanded;
     },
     likePost() {
-      this.$store.commit('likePost', this.post.id);
+      // emit like event to parent
+      this.$emit('like', this.post.id)
     },
     checkShowButton() {
       this.$nextTick(() => {
@@ -103,22 +87,10 @@ export default {
   border-radius: 8px;
 }
 
-.post-images img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
-
 .avatar-text {
   display: flex;
-  align-items: flex-start;
-  gap: 15px;
+  flex-direction: column; /* removed avatar, only text */
   width: 100%;
-}
-
-.user-avatar img {
-  width: 40px;
-  height: 40px;
 }
 
 .post-header {
@@ -128,7 +100,6 @@ export default {
   width: 100%;
   margin-bottom: 8px;
 }
-
 
 .usernames {
   font-weight: bold;
@@ -160,6 +131,13 @@ export default {
   border: none;
   cursor: pointer;
   padding: 0;
+}
+
+.post-like {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .post-like button {
