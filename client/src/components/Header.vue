@@ -5,7 +5,7 @@
             <span id="divider">|</span>
             <router-link to="/login" class="nav-link">Login</router-link>
             <router-link to="/signup" class="nav-link">Signup</router-link>
-            <router-link to="/add-post" class="nav-link">Add Post</router-link>
+            
         </div>
 
         <div id="account">

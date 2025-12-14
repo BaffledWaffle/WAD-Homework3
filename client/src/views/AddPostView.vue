@@ -21,6 +21,7 @@
 
 <script>
 import FooterComponent from '@/components/Footer.vue'
+import axios from 'axios'
 
 export default {
   name: "AddPostView",
@@ -29,9 +30,36 @@ export default {
     FooterComponent
   },
 
+  data() {
+    return {
+      body: '' // new data property for the post body
+    }
+  },
+
   methods: {
-    goToCreatePost() {
-      this.$router.push('/');
+    async goToCreatePost() {
+      this.body = document.getElementById('post-text').value
+      
+      if (!this.body.trim()) {
+        alert('Post cannot be empty!')
+        return
+      }
+
+      try {
+        const token = localStorage.getItem('token')
+
+        await axios.post(
+          'http://localhost:3000/posts',
+          { body: this.body },
+          { headers: { Authorization: `Bearer ${token}` } }
+        )
+
+        alert('Post created successfully!')
+        this.$router.push('/') // go back to home
+      } catch (err) {
+        console.error(err)
+        alert('Failed to create post. Are you logged in?')
+      }
     }
   }
 }
